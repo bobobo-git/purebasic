@@ -2,10 +2,10 @@
 
 <!-- Preferences Dialog for the PureBasic IDE -->
 
-<window label="Dialog_Preferences" id="#WINDOW_Preferences" lang="Preferences:Title" invisible="yes">
-  <vbox spacing="10">
+<window label="Dialog_Preferences" id="#WINDOW_Preferences" lang="Preferences:Title" invisible="yes" height="510">
+  <vbox spacing="10" expand="item:1">
     <hbox spacing="10">
-      <tree id="#GADGET_Preferences_Tree" width="#DEFAULT_PreferencesTreeWidth">
+      <tree id="#GADGET_Preferences_Tree" width="#DEFAULT_PreferencesTreeWidth" flags="#PB_Tree_AlwaysShowSelection">
         <item sublevel="0" lang="Preferences:General" />
         <item sublevel="1" lang="Preferences:Language" />
         <item sublevel="1" lang="Shortcuts:Shortcuts" />
@@ -110,7 +110,7 @@
         <container margin="0" invisible="yes" id="#GADGET_Preferences_FirstContainer+2">
           <frame lang="Shortcuts:Shortcuts" margin="5">
             <vbox expand="item:1" spacing="10">
-              <listicon id="#GADGET_Preferences_ShortcutList" flags="#PB_ListIcon_FullRowSelect">
+              <listicon id="#GADGET_Preferences_ShortcutList" flags="#PB_ListIcon_FullRowSelect|#PB_ListIcon_AlwaysShowSelection">
                 <column width="200" lang="Shortcuts:Action" />
                 <column width="90" lang="Shortcuts:Shortcut" />
               </listicon>
@@ -292,6 +292,12 @@
               <!-- removed 
               <checkbox id="#GADGET_Preferences_EnableMarkers"     lang="Preferences:EnableMarkers" />              
               -->
+              
+              <empty height="5" />
+              <hbox spacing="10" expand="item:2">
+                <text lang="Preferences:ExtraWordChars" text=": " />
+                <string id= "#GADGET_Preferences_ExtraWordChars" />
+              </hbox>
             </vbox>
           </frame>
         </container>
@@ -421,6 +427,7 @@
                   <vbox expand="no" align="top">
                     <checkbox id="#GADGET_Preferences_ShowIndentGuides" lang="Preferences:ShowIndentGuides" />
                     <checkbox id="#GADGET_Preferences_ShowWhiteSpace" lang="Preferences:ShowWhiteSpace" />
+                    <checkbox id="#GADGET_Preferences_UseTabIndentForSplittedLines" lang="Preferences:UseTabIndentForSplittedLines" />
 
                     <!-- currently not implemented! -->
                     <checkbox id="#GADGET_Preferences_BackspaceUnindent" lang="Preferences:BackspaceUnindent" invisible="yes"/>
@@ -991,8 +998,8 @@
               </gridbox>
 
               <vbox>
-                <checkbox id="#GADGET_Preferences_NoIndependantToolsColors" lang="Preferences:NoIndependandColors" />           
-                <!-- normal location for Windos -->
+                <checkbox id="#GADGET_Preferences_NoIndependentToolsColors" lang="Preferences:NoIndependandColors" />           
+                <!-- normal location for Windows -->
                 <compiler if="#CompileWindows">                
                   <checkbox id="#GADGET_Preferences_AutoHidePanel"            lang="Preferences:AutoHidePanel" />
                 </compiler>
@@ -1072,5 +1079,7 @@
 
   <shortcut key="#PB_Shortcut_Return" id="#GADGET_Preferences_Ok" />
   <shortcut key="#PB_Shortcut_Escape" id="#GADGET_Preferences_Cancel" />
+  <shortcut key="#PB_Shortcut_PageUp" id="#GADGET_Preferences_PageUp" />
+  <shortcut key="#PB_Shortcut_PageDown" id="#GADGET_Preferences_PageDown" />
 </window>
   

@@ -1,5 +1,5 @@
-;--------------------------------------------------------------------------------------------
-;  Copyright (c) Fantaise Software. All rights reserved.
+﻿;--------------------------------------------------------------------------------------------
+;  Copyright (c) Fantaisie Software. All rights reserved.
 ;  Dual licensed under the GPL and Fantaisie Software licenses.
 ;  See LICENSE and LICENSE-FANTAISIE in the project root for license information.
 ;--------------------------------------------------------------------------------------------
@@ -10,7 +10,7 @@
 ;  For execution by the IDE makefile
 ;
 ;  Creates the 'Info.plist' for The PureBasic bundle.
-;  This is done manually as we can better customize the whole think than the compiler does. 
+;  This is done manually as we can better customize the whole think than the compiler does.
 ;  (the icon option from the compiler is Not needed when using this)
 ;
 ;  Customisations are:
@@ -37,14 +37,14 @@ FileSize = FileSize(Path$+"Contents/MacOS/PureBasic");
 If FileSize <=0 ; Try with SpiderBasic as well
   FileSize = FileSize(Path$+"Contents/MacOS/SpiderBasic")
   IsSpiderBasic = 1
-EndIf 
+EndIf
 
 If FileSize <= 0
   PrintN("Wrong commandline argument! Pass the IDE path (including the .app) as argument")
   End 1
 EndIf
 
-DeleteFile(Path$+"Contents/Resources/PB 3D Mac Icon.icns")
+DeleteFile(Path$+"Contents/Resources/PB3D_MacIcon.icns")
 DeleteFile(Path$+"Contents/Resources/FileIcon.icns")
 DeleteFile(Path$+"Contents/Resources/Logo.icns")
 
@@ -63,8 +63,8 @@ If IsSpiderBasic
   
 Else
   
-  If CopyFile("data/logo/PB 3D Mac Icon.icns", Path$+"Contents/Resources/PB 3D Mac Icon.icns") = 0
-    PrintN("Cannot copy 'data/logo/PB 3D Mac Icon.icns'!")
+  If CopyFile("data/logo/PB3D_MacIcon.icns", Path$+"Contents/Resources/PB3D_MacIcon.icns") = 0
+    PrintN("Cannot copy 'data/logo/PB3D_MacIcon.icns'!")
     End 1
   EndIf
   
@@ -72,7 +72,7 @@ Else
     PrintN("Cannot copy 'data/logo/mac/FileIcon.icns'!")
     End 1
   EndIf
-
+  
 EndIf
 
 ; Try to get the PB Version
@@ -182,7 +182,7 @@ If IsSpiderBasic
 Else
   WriteStringN(0, "  <key>CFBundleSignature</key>")
   WriteStringN(0, "  <string>PBED</string>")
-
+  
   ; This is used to "identify the application at runtime". could help to implement a "runonce" for OSX
   WriteStringN(0, "  <key>CFBundleIdentifier</key>")
   WriteStringN(0, "  <string>com.fantaisiesoftware.purebasicide</string>")
@@ -191,7 +191,7 @@ Else
   WriteStringN(0, "  <string>PureBasic</string>")
   
   WriteStringN(0, "  <key>CFBundleIconFile</key>")
-  WriteStringN(0, "  <string>PB 3D Mac Icon.icns</string>")
+  WriteStringN(0, "  <string>PB3D_MacIcon.icns</string>")
 EndIf
 
 ; Stuff that is equal to the Compiler created plist

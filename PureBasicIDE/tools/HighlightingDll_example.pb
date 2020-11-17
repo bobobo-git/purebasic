@@ -1,19 +1,19 @@
-;--------------------------------------------------------------------------------------------
-;  Copyright (c) Fantaise Software. All rights reserved.
+﻿;--------------------------------------------------------------------------------------------
+;  Copyright (c) Fantaisie Software. All rights reserved.
 ;  Dual licensed under the GPL and Fantaisie Software licenses.
 ;  See LICENSE and LICENSE-FANTAISIE in the project root for license information.
 ;--------------------------------------------------------------------------------------------
 ;
 ;
-; The SyntaxHilighting.dll provides the syntax parser of the 
+; The SyntaxHighlighting.dll provides the syntax parser of the
 ; PureBasic IDE in form of a dll, so it can be easily reused
 ; to do other tasks as well.
 ;
 ; Some notes:
 ;
-; - For speed reasons, the dll is not threadsave.
+; - For speed reasons, the dll is not threadsafe.
 ;
-; - The hilighter does not handle unicode. It does however handle UTF8, so if
+; - The highlighter does not handle unicode. It does however handle UTF8, so if
 ;   Unicode text should be parsed, convert it to UTF8 first.
 ;
 ; The dll exports only one function:
@@ -33,7 +33,7 @@
 ;
 Enumeration
   #SYNTAX_Text
-  #SYNTAX_Keyword  
+  #SYNTAX_Keyword
   #SYNTAX_Comment
   #SYNTAX_Constant
   #SYNTAX_String
@@ -44,7 +44,7 @@ Enumeration
   #SYNTAX_Number
   #SYNTAX_Pointer
   #SYNTAX_Separator
-  #SYNTAX_Label  
+  #SYNTAX_Label
   #SYNTAX_Module
 EndEnumeration
 
@@ -52,7 +52,7 @@ EndEnumeration
 #Input  = 0
 #Output = 1
 
-; Callback that is called from the dll. 
+; Callback that is called from the dll.
 ;
 ; NOTE: For performance reasons, whitespace characters (space, tab, newline)
 ; are returned together with the tokens they surround to reduce the number
@@ -60,16 +60,16 @@ EndEnumeration
 ; here in the callback manually.
 ;
 ; The original buffer is not modified. The *Position parameter points to the
-; current position in the original buffer. 
+; current position in the original buffer.
 ;
 ;
 Procedure Callback(*Position, Length, Color)
-
+  
   ; In this example, we simply write the data as it is to the output
   ; buffer, and just apply bold to keywords, and colors to functions and comments.
   ;
   Select Color
-  
+      
     Case #SYNTAX_Keyword
       WriteString(#Output, "<b>")
       WriteData(#Output, *Position, Length)
@@ -78,25 +78,25 @@ Procedure Callback(*Position, Length, Color)
     Case #SYNTAX_Function
       WriteString(#Output, "<font color=#0000FF>")
       WriteData(#Output, *Position, Length)
-      WriteString(#Output, "</font>")    
-    
+      WriteString(#Output, "</font>")
+      
     Case #SYNTAX_Comment
       WriteString(#Output, "<font color=#808080>")
       WriteData(#Output, *Position, Length)
-      WriteString(#Output, "</font>")        
-    
+      WriteString(#Output, "</font>")
+      
     Default
       WriteData(#Output, *Position, Length)
-  
+      
   EndSelect
-
+  
 EndProcedure
 
-; Simple example code. It loads a PB file and outputs a HTML file withs some
+; Simple example code. It loads a PB file and outputs a HTML file with some
 ; coloring for functions, keywords and comments
 ;
-If OpenLibrary(#Dll, "SyntaxHilighting.dll")  
-
+If OpenLibrary(#Dll, "SyntaxHighlighting.dll")
+  
   InputFile$ = OpenFileRequester("Select PB File", "*.pb", "PB Files|*.pb|All Files|*.*", 0)
   If InputFile$
     OutputFile$ = SaveFileRequester("Select Target file", InputFile$+".html", "Html Files|*.html|All Files|*.*", 0)
@@ -108,20 +108,16 @@ If OpenLibrary(#Dll, "SyntaxHilighting.dll")
       If *Buffer
         ReadData(#Input, *Buffer, Length)
         
-        WriteStringN(#Output, "<html><body><pre>")        
-        CallFunction(#Dll, "SyntaxHighlight", *Buffer, Length, @Callback(), 0)              
+        WriteStringN(#Output, "<html><body><pre>")
+        CallFunction(#Dll, "SyntaxHighlight", *Buffer, Length, @Callback(), 0)
         WriteStringN(#Output, "</pre></html></body>")
-      EndIf    
-    
+      EndIf
+      
       CloseFile(#Input)
       CloseFile(#Output)
     EndIf
-  
-  EndIf  
+    
+  EndIf
   
   CloseLibrary(#Dll)
 EndIf
-; IDE Options = PureBasic 5.20 beta 2 (Windows - x64)
-; CursorPosition = 49
-; Folding = -
-; EnableXP

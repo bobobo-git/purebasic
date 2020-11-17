@@ -1,5 +1,5 @@
-;--------------------------------------------------------------------------------------------
-;  Copyright (c) Fantaise Software and Gaetan DUPONT-PANON. All rights reserved.
+﻿;--------------------------------------------------------------------------------------------
+;  Copyright (c) Fantaisie Software and Gaetan DUPONT-PANON. All rights reserved.
 ;  Dual licensed under the GPL and Fantaisie Software licenses.
 ;  See LICENSE and LICENSE-FANTAISIE in the project root for license information.
 ;--------------------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ CompilerSelect #PB_Compiler_OS
     Else
       P_FontGrid = "Segoe UI"
     EndIf
-      
+    
     #P_FontGridSize = 10
     #P_FontCode = "Courier New"
     #P_FontCodeSize = 11
@@ -288,7 +288,7 @@ EndStructure
 ; Help structures used when generating and parsing source code
 Structure two
   a.i : b.i
-EndStructure 
+EndStructure
 Structure twostring
   a.s
   b.s
@@ -419,7 +419,7 @@ Enumeration #PB_Compiler_EnumerationValue
   #Form_Menu15
   #Form_Menu16
   #Form_Menu17
-
+  
   #Form_Items
   #Form_Columns
   #Form_ImgList
@@ -943,8 +943,8 @@ Procedure FlagValue(flag.s)
     EndIf
   Next
 EndProcedure
-  
-  
+
+
 ;}
 
 
@@ -985,7 +985,7 @@ Procedure InitVars()
         
       EndIf
       
-      P_WinHeight = 29 
+      P_WinHeight = 29
       P_Status = 23
       P_Menu = 22
       P_FontSize = 9
@@ -1019,11 +1019,11 @@ Procedure InitVars()
   EndSelect
   
   CompilerIf #PB_Compiler_OS = #PB_OS_MacOS
-      P_FontSize + 3
-      P_FontSizeL + 3
-      P_FontGadgetSize + 3
-      P_FontMenuSize + 3
-      P_FontColumnSize + 3
+    P_FontSize + 3
+    P_FontSizeL + 3
+    P_FontGadgetSize + 3
+    P_FontMenuSize + 3
+    P_FontColumnSize + 3
   CompilerEndIf
   
   
@@ -1053,8 +1053,8 @@ DataSection ;{
   date: : IncludeBinary "img/macdate.png"
   maccheckbx: : IncludeBinary "img/maccheckbox.png"
   maccheckbxsel: : IncludeBinary "img/maccheckboxchecked.png"
-  macoptin: : IncludeBinary "img/macoption.png"
-  macoptinsel: : IncludeBinary "img/macoptionselected.png"
+  macoption: : IncludeBinary "img/macoption.png"
+  macoptionsel: : IncludeBinary "img/macoptionselected.png"
   mactrackbar: : IncludeBinary "img/mactrackbar.png"
   mactrackbarv: : IncludeBinary "img/mactrackbarv.png"
   
@@ -1071,8 +1071,8 @@ DataSection ;{
   win8close: : IncludeBinary "img/windows8close.png"
   win8checkbx: : IncludeBinary "img/windows8checkbox.png"
   win8checkbxsel: : IncludeBinary "img/windows8checkboxok.png"
-  win8optin: : IncludeBinary "img/windows8option.png"
-  win8optinsel: : IncludeBinary "img/windows8optionok.png"
+  win8option: : IncludeBinary "img/windows8option.png"
+  win8optionsel: : IncludeBinary "img/windows8optionok.png"
   win8spin: : IncludeBinary "img/windows8spin.png"
   win8arrowdown: : IncludeBinary "img/windows8arrowdown.png"
   win8scrollup: : IncludeBinary "img/windows8scrollup.png"
@@ -1089,8 +1089,8 @@ DataSection ;{
   win7mindis: : IncludeBinary "img/windowsmindis.png"
   win7checkbx: : IncludeBinary "img/windowscheckbox.png"
   win7checkbxsel: : IncludeBinary "img/windowscheckboxsel.png"
-  win7optin: : IncludeBinary "img/windowsoption.png"
-  win7optinsel: : IncludeBinary "img/windowsoptionsel.png"
+  win7option: : IncludeBinary "img/windowsoption.png"
+  win7optionsel: : IncludeBinary "img/windowsoptionsel.png"
   
   ; linux drawing helping images
   linuxmin: : IncludeBinary "img/linuxmin.png"

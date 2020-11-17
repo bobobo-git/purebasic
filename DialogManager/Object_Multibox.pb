@@ -1,5 +1,5 @@
-;--------------------------------------------------------------------------------------------
-;  Copyright (c) Fantaise Software. All rights reserved.
+﻿;--------------------------------------------------------------------------------------------
+;  Copyright (c) Fantaisie Software. All rights reserved.
 ;  Dual licensed under the GPL and Fantaisie Software licenses.
 ;  See LICENSE and LICENSE-FANTAISIE in the project root for license information.
 ;--------------------------------------------------------------------------------------------
@@ -8,8 +8,8 @@
 XIncludeFile "Object_BoxBase.pb"
 
 ;
-; multibox 
-;   A box with multiple childs in the same position. Used to put multiple containers
+; multibox
+;   A box with multiple children in the same position. Used to put multiple containers
 ;   inside and show only one of them at a time.
 ;
 ; Accepted keys in the XML:
@@ -38,19 +38,19 @@ EndProcedure
 
 Procedure DlgMultibox_SizeRequest(*THIS.DlgMultibox, *Width.LONG, *Height.LONG)
   *Width\l  = 0
-  *Height\l = 0  
-
-  For i = 0 To *THIS\NbChilds-1
+  *Height\l = 0
+  
+  For i = 0 To *THIS\NbChildren-1
     Height = 0
     Width  = 0
     
-    *THIS\Childs[i]\SizeRequest(@Width, @Height)       
+    *THIS\Children[i]\SizeRequest(@Width, @Height)
     
     *Width\l  = Max(*Width\l,  Width)
     *Height\l = Max(*Height\l, Height)
-  Next i      
-
-
+  Next i
+  
+  
   *Width\l  = Max(*Width\l,  *THIS\StaticData\MinWidth)
   *Height\l = Max(*Height\l, *THIS\StaticData\MinHeight)
 EndProcedure
@@ -58,24 +58,24 @@ EndProcedure
 
 
 Procedure DlgMultibox_SizeApply(*THIS.DlgMultibox, x, y, Width, Height)
-  For i = 0 To *THIS\NbChilds-1
-    *THIS\Childs[i]\SizeApply(x, y, Width, Height)        
-  Next i      
+  For i = 0 To *THIS\NbChildren-1
+    *THIS\Children[i]\SizeApply(x, y, Width, Height)
+  Next i
 EndProcedure
 
 
 
 DataSection
-
+  
   DlgMultibox_VTable:
-    Data.i @DlgBase_SizeRequestWrapper()
-    Data.i @DlgMultibox_SizeRequest()
-    Data.i @DlgMultibox_SizeApply()
-    Data.i @DlgBoxBase_AddChild()
-    Data.i @DlgBoxBase_FoldApply()
-    Data.i @DlgBoxBase_Find()
-    Data.i @DlgBase_Finish()
-    Data.i @DlgBoxBase_Update()
-    Data.i @DlgBoxBase_Destroy()
-
+  Data.i @DlgBase_SizeRequestWrapper()
+  Data.i @DlgMultibox_SizeRequest()
+  Data.i @DlgMultibox_SizeApply()
+  Data.i @DlgBoxBase_AddChild()
+  Data.i @DlgBoxBase_FoldApply()
+  Data.i @DlgBoxBase_Find()
+  Data.i @DlgBase_Finish()
+  Data.i @DlgBoxBase_Update()
+  Data.i @DlgBoxBase_Destroy()
+  
 EndDataSection

@@ -18,7 +18,7 @@
  */
 
 #define LIBRARYINFO_Objects  0x00000001 // ExamineObjects() and NextObject() is implemented
-#define LIBRARYINFO_Text     0x00000002 // GetObjectText() is implemented 
+#define LIBRARYINFO_Text     0x00000002 // GetObjectText() is implemented
 #define LIBRARYINFO_Data     0x00000004 // GetObjectData() and FreeObjectData() is implemented
 #define LIBRARYINFO_SwapData 0x00000008 // SwapObjectData() is implemented
 
@@ -26,14 +26,14 @@ typedef struct PB_StructureLibraryInfo
 {
   int size;          // must be sizeof this structure (for future compatibility)
   int mask;          // LIBRARYINFO mask (defines the provided information)
-  
+
   char *LibraryID;   // unique ID string for this library (for internal use)
   char *Name;        // Library Name as displayed to the user
   char *NameShort;   // Library Name as used in ShowLibraryViewer("name")
-  
+
   char *ListTitles;  // for LIBRARYINFO_Objects: provides a Tab separated list of table headers (for the ListIcon display. format: TITLE1<tab>Size1<tab>TITLE2<tab>Size2)
 
-  int (*ExamineObjects)(void); // start object enumeration (return true if successfull, false if not)
+  int (*ExamineObjects)(void); // start object enumeration (return true if successful, false if not)
   int (*NextObject)(integer *id, char *buffer); // get next object. fill id and **info with unique ID and text for ListIcon line (Tab separated as the title string), return 0 for no more objects
   int (*GetObjectText)(integer id, char *buffer); // get Text info on the given id object (return success or failure)
   int (*GetObjectData)(integer id, void **data, integer *size); // get data representation of the id object (return success or failure)
@@ -42,7 +42,7 @@ typedef struct PB_StructureLibraryInfo
 } PB_LibraryInfo;
 
 /* Register a library for the Library Viewer:
- * The passed PB_DebuggerLibraryInfo structure must be initialized, and stay persisten during the whole
+ * The passed PB_DebuggerLibraryInfo structure must be initialized, and stay persistent during the whole
  * run of the program (the debugger does not store the contained data itself, the library must do that!
  */
 void PB_DEBUGGER_RegisterLibrary(PB_LibraryInfo *library);
@@ -56,6 +56,6 @@ typedef struct
   int Format;         // PB_PixelFormat values (32bit or 24bit only)
   int BytesPerPixel;  // 3 or 4
   int Pitch;
-  int Width;  
+  int Width;
   int Height;         // Following is the image data in top-down format
 } PB_LibraryViewer_Image;

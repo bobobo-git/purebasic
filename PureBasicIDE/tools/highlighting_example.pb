@@ -1,5 +1,5 @@
-;--------------------------------------------------------------------------------------------
-;  Copyright (c) Fantaise Software. All rights reserved.
+﻿;--------------------------------------------------------------------------------------------
+;  Copyright (c) Fantaisie Software. All rights reserved.
 ;  Dual licensed under the GPL and Fantaisie Software licenses.
 ;  See LICENSE and LICENSE-FANTAISIE in the project root for license information.
 ;--------------------------------------------------------------------------------------------
@@ -33,13 +33,13 @@ EndProcedure
 Procedure.s GenerateQuickHelpText(Word$)
 EndProcedure
 
-XIncludeFile "..\HilightningEngine.pb"
+XIncludeFile "..\HighlightingEngine.pb"
 
 
 ; ==================================================
 
-Procedure HilightCallback(*StringStart.BYTE, Length, *Color, IsBold, TextChanged)
-
+Procedure HighlightCallback(*StringStart.BYTE, Length, *Color, IsBold, TextChanged)
+  
   If IsBold
     WriteString("<B>")
   EndIf
@@ -50,16 +50,16 @@ Procedure HilightCallback(*StringStart.BYTE, Length, *Color, IsBold, TextChanged
   
   
   WriteString(PeekS(*StringStart, Length))
-    
-
+  
+  
   If *Color <> 0
     WriteString("</FONT>")
-  EndIf  
+  EndIf
   
   If IsBold
     WriteString("</B>")
-  EndIf  
-
+  EndIf
+  
 EndProcedure
 
 ; The color values are represented by pointers, because on linux they
@@ -84,16 +84,16 @@ EndProcedure
 *MarkerColor        = 0
 *ModuleColor        = 0
 
-EnableColoring = 1        ; set the hilightning options to on.
+EnableColoring = 1        ; set the highlighting options to on.
 EnableCaseCorrection = 1
 EnableKeywordBolding = 1
 
 
 InitSyntaxCheckArrays()
-InitSyntaxHilightning()
+InitSyntaxHighlighting()
 
 
-File$ = OpenFileRequester("Choose File: ", "C:\", "PB Files|*.pb|All Files|*,*", 0) 
+File$ = OpenFileRequester("Choose File: ", "C:\", "PB Files|*.pb|All Files|*,*", 0)
 If ReadFile(0, File$)
   Size = Lof()
   *Buffer = AllocateMemory(Size)
@@ -103,8 +103,8 @@ If ReadFile(0, File$)
     
     If CreateFile(1, File$+".html")
       WriteString("<html><body bgcolor=#FFFFDF><pre>")
-    
-      HilightningEngine(*Buffer, Size, 0, @HilightCallback(), 0) ; 3rd and 5th parameter MUST be 0 if not called from IDE
+      
+      HighlightingEngine(*Buffer, Size, 0, @HighlightCallback(), 0) ; 3rd and 5th parameter MUST be 0 if not called from IDE
       
       WriteString("</pre></body></html>")
       
@@ -118,9 +118,3 @@ If ReadFile(0, File$)
 EndIf
 
 
-
-; IDE Options = PureBasic 5.20 beta 2 (Windows - x64)
-; CursorPosition = 96
-; FirstLine = 78
-; Folding = -
-; EnableXP

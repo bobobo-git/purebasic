@@ -1,5 +1,5 @@
-;--------------------------------------------------------------------------------------------
-;  Copyright (c) Fantaise Software and Gaetan DUPONT-PANON. All rights reserved.
+﻿;--------------------------------------------------------------------------------------------
+;  Copyright (c) Fantaisie Software and Gaetan DUPONT-PANON. All rights reserved.
 ;  Dual licensed under the GPL and Fantaisie Software licenses.
 ;  See LICENSE and LICENSE-FANTAISIE in the project root for license information.
 ;--------------------------------------------------------------------------------------------
@@ -37,16 +37,16 @@ Procedure FD_InitBasicPropGridRows(gadget = 0)
   
   PropGridAddItem(propgrid, i, "X")
   i + 1
-
+  
   PropGridAddItem(propgrid, i, "Y")
   i + 1
-
+  
   PropGridAddItem(propgrid, i, Language("Form", "Width"))
   i + 1
-
+  
   PropGridAddItem(propgrid, i, Language("Form", "Height"))
   i + 1
-
+  
   PropGridAddItem(propgrid, i, Language("Form", "Hidden"))
   grid_SetCellType(propgrid, 2, i, #Grid_Cell_Checkbox)
   i + 1
@@ -54,7 +54,7 @@ Procedure FD_InitBasicPropGridRows(gadget = 0)
   PropGridAddItem(propgrid, i, Language("Form", "Disabled"))
   grid_SetCellType(propgrid, 2, i, #Grid_Cell_Checkbox)
   i + 1
-
+  
 EndProcedure
 Procedure FD_Init()
   
@@ -72,8 +72,8 @@ Procedure FD_Init()
   CatchImage(#Img_MacMin,?macmin)
   CatchImage(#Img_MacCheckbox,?maccheckbx)
   CatchImage(#Img_MacCheckboxSel,?maccheckbxsel)
-  CatchImage(#Img_MacOption,?macoptin)
-  CatchImage(#Img_MacOptionSel,?macoptinsel)
+  CatchImage(#Img_MacOption,?macoption)
+  CatchImage(#Img_MacOptionSel,?macoptionsel)
   CatchImage(#Img_MacTrackbar,?mactrackbar)
   CatchImage(#Img_MacTrackbarV,?mactrackbarv)
   CatchImage(#Img_MacSubMenu,?submenu)
@@ -91,19 +91,19 @@ Procedure FD_Init()
   CatchImage(#Img_Win7Min,?win7min)
   CatchImage(#Img_Win7Checkbox,?win7checkbx)
   CatchImage(#Img_Win7CheckboxSel,?win7checkbxsel)
-  CatchImage(#Img_Win7Option,?win7optin)
-  CatchImage(#Img_Win7OptionSel,?win7optinsel)
+  CatchImage(#Img_Win7Option,?win7option)
+  CatchImage(#Img_Win7OptionSel,?win7optionsel)
   CatchImage(#Img_Win7Trackbar,?win7trackbar)
   CatchImage(#Img_Win7TrackbarV,?win7trackbarv)
-
+  
   ; windows 8
   CatchImage(#Img_Win8Close,?win8close)
   CatchImage(#Img_Win8Max,?win8max)
   CatchImage(#Img_Win8Min,?win8min)
   CatchImage(#Img_Win8Checkbox,?win8checkbx)
   CatchImage(#Img_Win8CheckboxSel,?win8checkbxsel)
-  CatchImage(#Img_Win8Option,?win8optin)
-  CatchImage(#Img_Win8OptionSel,?win8optinsel)
+  CatchImage(#Img_Win8Option,?win8option)
+  CatchImage(#Img_Win8OptionSel,?win8optionsel)
   CatchImage(#Img_Win8Spin,?win8spin)
   CatchImage(#Img_Win8ArrowDown,?win8arrowdown)
   CatchImage(#Img_Win8ScrollDown,?win8scrolldown)
@@ -120,7 +120,7 @@ Procedure FD_Init()
   
   CatchImage(#Img_Plus,?plus)
   CreateImage(#Drawing_Img,400,400)
-    
+  
   
   CreatePopupMenu(#Form_Menu0)
   MenuItem(#Menu_Rename,Language("Form", "Rename"))
@@ -171,7 +171,7 @@ Procedure FD_Init()
   MenuItem(#Menu_AlignTop,Language("Form", "AlignTop"))
   MenuItem(#Menu_AlignWidth,Language("Form", "AlignWidth"))
   MenuItem(#Menu_AlignHeight,Language("Form", "AlignHeight"))
-
+  
   
   CreatePopupMenu(#Form_Menu3)
   MenuItem(#Menu_Copy,Language("Form", "Copy"))

@@ -1,13 +1,13 @@
 /*
  * Header file used by all purifier library
  */
- 
+
 #define PURIFIER_COOKIE_SIZE 4
 #define PURIFIER_COOKIE 0xBADF00D
 
 typedef struct PB_PurifierMemoryBlock
 {
-  int *BeforeCookie; /* Directly store the before and after cookie adress so the check is fast */
+  int *BeforeCookie; /* Directly store the before and after cookie address so the check is fast */
   int *AfterCookie;
 } PB_PurifierMemoryBlock;
 
